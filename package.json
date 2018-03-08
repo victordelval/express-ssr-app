@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Api REST app with Express",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "Express",
     "Node",
@@ -13,5 +10,24 @@
     "REST"
   ],
   "author": "Victor del Val",
-  "license": "ISC"
+  "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --require 'babel-register' src/index.js",
+    "client": "node --require 'babel-register' src/client.js",
+    "watch": "nodemon"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.14.12"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.3",
+    "pug": "^2.0.0-rc.4"
+  }
 }
