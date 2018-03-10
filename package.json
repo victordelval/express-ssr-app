@@ -1,7 +1,7 @@
 {
   "name": "express-rest-app",
   "version": "1.0.0",
-  "description": "Api REST app with Express",
+  "description": "NodeJS and Express app to expose a REST API",
   "main": "index.js",
   "keywords": [
     "Express",
