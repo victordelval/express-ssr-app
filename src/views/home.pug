@@ -1,6 +1,8 @@
 html
-    head
-        title!= title
+    include includes/head.pug
     body
-        h1!= message
-        p Primer layout
+        include includes/header.pug
+        .container
+            h1.bd-title!= message
+            p NodeJS es un entorno en tiempo de ejecución, multiplataforma...
+        include includes/footer.pug
