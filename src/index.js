@@ -36,6 +36,13 @@ app.get('/temario', (req, res) => {
     res.end();
 })
 
+app.get('/:user', (req, res) => {
+    res.render('user', {
+        title: 'OpenWebinars - User',
+        message: `Bienvenido usuario ${req.params.user}`
+    })
+})
+
 app.use('/static', express.static(path.join(__dirname, 'public')))
 
 // server listen
