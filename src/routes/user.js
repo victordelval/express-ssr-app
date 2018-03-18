@@ -4,7 +4,7 @@ const router = express.Router()
 
 router.get('/:user', (req, res) => {
     res.render('user', {
-        title: 'Express Rest App - User',
+        title: 'Express SSR App - User',
         message: `Bienvenido usuario ${req.params.user}`
     })
 })

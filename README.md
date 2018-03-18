@@ -7,7 +7,7 @@
 
 
 ## Short Description
-The objective of the project is to create a basic Express backend to expose a REST API
+The objective of the project is to create a basic Express backend with server-side rendering (SSR).
 
 
 ## Project Dependencies

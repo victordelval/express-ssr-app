@@ -30,7 +30,7 @@ const server = {
         // Middleware to manage 404 error
         app.use((req, res, next) => {
             res.render('404', {
-                title: 'Express Rest App - Error',
+                title: 'Express SSR App - Error',
                 message: 'La ruta que esta intentando acceder.. No existe!!!'
             })
             next()

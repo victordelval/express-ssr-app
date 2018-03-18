@@ -1,13 +1,13 @@
 {
-  "name": "express-rest-app",
+  "name": "express-ssr-app",
   "version": "1.0.0",
-  "description": "NodeJS and Express app to expose a REST API",
+  "description": "Exercise with NodeJS and Express to build an app with server-side rendering (ssr)",
   "main": "src/index.js",
   "keywords": [
     "Express",
     "Node",
     "API",
-    "REST"
+    "SSR"
   ],
   "author": "Victor del Val",
   "license": "ISC",
