@@ -6,43 +6,49 @@ import bodyParser from 'body-parser'
 import router from './router'
 
 
-const app = express()
+let _server
 
+const server = {
+    start() {
+        const app = express()
 
-// Custom settings
+        // Custom settings
+        app.disable('x-powered-by')
+        app.set('env', process.env.NODE_ENV)
+        if (process.env.NODE_ENV !== 'test') {
+            app.use(logger('combined'))
+        }
+        app.use(bodyParser.json())
+        app.use(bodyParser.urlencoded({ extended: false }))
+        app.set('views', path.join(__dirname, 'views'))
+        app.set('view engine', 'pug')
 
-app.disable('x-powered-by')
-app.set('env', 'development')  // process.env ...
+        // Routes
+        router(app)
+        app.use('/static', express.static(path.join(__dirname, 'public')))
 
-app.use(logger('combined'))
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+        // Middleware to manage 404 error
+        app.use((req, res, next) => {
+            res.render('404', {
+                title: 'Express Rest App - Error',
+                message: 'La ruta que esta intentando acceder.. No existe!!!'
+            })
+            next()
+        })
 
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'pug')
+        // Server listen
+        _server = app.listen('9000', () => {
+            console.log('Servidor arrancado en http://localhost:9000')
+        })
+    },
 
+    close() {
+        _server.close()
+    }
+}
 
-// Routes
+export default server
 
-router(app)
-
-app.use('/static', express.static(path.join(__dirname, 'public')))
-
-
-// Middleware to manage 404 error
-
-app.use((req, res, next) => {
-    res.render('404', {
-        title: 'Express Rest App - Error',
-        message: 'La ruta que esta intentando acceder.. No existe!!!'
-    })
-
-    next()
-})
-
-
-// Server listen
-
-app.listen('9000', () => {
-    console.log('Servidor arrancado en http://localhost:9000')
-})
+if (!module.parent) {
+    server.start()
+}
